@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends Activity {
-      @BindView(R.id.tfUserName) EditText tfUserName;
+    @BindView(R.id.tfUserName) EditText tfUserName;
     @BindView(R.id.tfEmail) EditText tfEmail;
     @BindView(R.id.tfBirthDate) EditText tfBirthDate;
     @BindView(R.id.tvHello) TextView tvHello;
@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        tvHello.setText(getString(R.string.hello_statement, getString(R.string.unregistered_user)));
     }
 
 

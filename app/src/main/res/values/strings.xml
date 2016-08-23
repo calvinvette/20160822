@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
-    >
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">DiceRoller</string>
-    <string name="hello_statement">Hello, Unregistered User!</string>
+    <string name="hello_statement">Hello, <xliff:g id="userName">%s</xliff:g>!</string>
+    <string name="unregistered_user">Unregistered User</string>
     <string name="goodbye_statement">Goodbye.</string>
     <string name="why_statement">I dont know why you say goodbye, I say hello!</string>
-    <string name="registered_user">User <xliff:g id="userName" example="NewUser">%s</xliff:g> is now registered</string>
+    <string name="registered_user">User <xliff:g id="userName">%s</xliff:g> is now registered</string>
 
 </resources>
