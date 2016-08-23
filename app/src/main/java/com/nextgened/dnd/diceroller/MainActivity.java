@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         Log.i(MainActivity.class.getName(), "BirthDate: " + birthDate);
         Log.i(MainActivity.class.getName(), "Email: " + email);
 
-        tvHello.setText("Hello, " + userName);
+        tvHello.setText(getString(R.string.hello_statement, userName));
         String registered_user = getString(R.string.registered_user, userName);
         Toast.makeText(this, registered_user, Toast.LENGTH_LONG).show();
     }

@@ -13,89 +13,93 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:text="@string/hello_statement"
-        android:id="@+id/tvHello" />
+        android:id="@+id/tvHello"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
     <TextView
         android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/goodbye_statement"
         android:id="@+id/tvGoodbye"
-        android:layout_below="@+id/tvHello"
-        android:layout_toEndOf="@+id/tvHello"
-        android:layout_marginStart="24dp" />
+        android:layout_marginStart="20dp"
+        android:layout_alignTop="@+id/tvHello"
+        android:layout_toEndOf="@+id/tvHello" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/why_statement"
         android:id="@+id/tvWhy"
-        android:layout_below="@+id/tvGoodbye"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignTop="@+id/tvGoodbye"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_marginEnd="14dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/tfUserName"
-        android:layout_below="@+id/tvWhy"
-        android:layout_alignStart="@+id/tvGoodbye"
-        android:layout_marginTop="33dp"
-        android:hint="Your Name" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Name"
-        android:id="@+id/textView"
-        android:layout_alignBaseline="@+id/tfUserName"
-        android:layout_alignBottom="@+id/tfUserName"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:id="@+id/tvEmail"
-        android:layout_below="@+id/tfUserName"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Birth Date"
-        android:id="@+id/tvBirthDate"
-        android:layout_below="@+id/tfEmail"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/btnRegister"
-        android:layout_below="@+id/tvBirthDate"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"
- />
     <!--android:onClick="registerUser"-->
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/tfEmail"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/tfUserName"
-        android:hint="Your Email" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/tvHello"
+        android:layout_alignParentEnd="true">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/tfBirthDate"
-        android:layout_below="@+id/tvEmail"
-        android:layout_alignStart="@+id/tfEmail"
-        android:hint="Your Birth Date" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/tfUserName"
+            android:hint="Your Name"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Name"
+            android:id="@+id/textView"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/tfBirthDate"
+            android:hint="Your Birth Date"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birth Date"
+            android:id="@+id/tvBirthDate"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/tfEmail"
+            android:hint="Your Email"
+            android:layout_gravity="center_horizontal" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:id="@+id/tvEmail"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:id="@+id/btnRegister"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>
