@@ -6,5 +6,6 @@
 <string name="goodbye_statement">Goodbye.</string>
 <string name="why_statement">I dont know why you say goodbye, I say hello!</string>
 <string name="registered_user">User <xliff:g id="userName">%s</xliff:g> is now registered</string>
+    <string name="flag_of_canada">Flag of Canada</string>
 
-    </resources>
+</resources>
