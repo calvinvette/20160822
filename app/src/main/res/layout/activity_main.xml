@@ -340,7 +340,7 @@
             </GridLayout>
 
             <ImageView
-                android:layout_width="256dp"
+                android:layout_width="128dp"
                 android:layout_height="0dp"
                 android:id="@+id/imageView"
                 android:src="@mipmap/flag_of_canada"
@@ -352,6 +352,22 @@
                 android:layout_height="match_parent"></FrameLayout>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WWW"
+        android:id="@+id/btnMyWebView"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/tvWhy" />
+
+    <!--    <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WWW"
+            android:id="@+id/btnWebView"
+            android:layout_alignParentEnd="true" />-->
 
 
 </RelativeLayout>
