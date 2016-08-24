@@ -41,7 +41,10 @@ public class UserDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = dao.findById(Long.parseLong(ARG_ITEM_ID));
+
+            // TODO - make this more bulletproof. (Try/catch for NPE)
+            String o = getArguments().get(ARG_ITEM_ID).toString();
+            mItem = dao.findById(Long.parseLong(o));
         }
     }
 
