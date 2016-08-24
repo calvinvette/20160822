@@ -14,8 +14,12 @@ import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Path;
@@ -31,6 +35,8 @@ import butterknife.OnFocusChange;
 
 public class MainActivity extends Activity {
     User userToRegister = new User();
+
+    Validator validator;
 
     @BindView(R.id.tfUserName)
     EditText tfUserName;
@@ -72,7 +78,7 @@ public class MainActivity extends Activity {
         user.setEmail(email);
         user.setLastUpdated(new Date());
         user.setCreatedDate(new Date());
-        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+
         errors.addAll(validator.validate(user));
 
         if (errors.size() <= 0) {
@@ -81,11 +87,21 @@ public class MainActivity extends Activity {
             Toast.makeText(this, registered_user, Toast.LENGTH_LONG).show();
 
         } else {
-//            String allErrorMessages = "";
-//            for (ConstraintViolation<User> error : errors) {
-//                allErrorMessages += Resources.getSystem().getIdentifier(error.getMessageTemplate(), "string", null);
-//            }
-//            Log.e(MainActivity.class.getName(), errors.toString());
+            String allErrorMessages = "";
+            Map<String, Map<String, Object>> errorMap = new HashMap<>();
+            for (ConstraintViolation<User> error : errors) {
+                // getMessageTemplate returns the error key like "javax.validation.constraints.min.Message"
+                // We'll need to put an error message in the respective strings.xml files
+                //  with a key of javax.validation.constraints.min.Message
+                allErrorMessages +=
+                        getString(Resources.getSystem().getIdentifier(error.getMessageTemplate(), "string", null));
+
+                // Use this map to integrate into paramateraizable internationalized error messages
+                // The attributes are the values typed in the constraints in the User bean, like Min(1) for customerId
+                errorMap.put(error.getMessageTemplate(), error.getConstraintDescriptor().getAttributes());
+            }
+            Log.e(MainActivity.class.getName(), allErrorMessages);
+            Log.e(MainActivity.class.getName(), errorMap.toString());
 //            Toast.makeText(this, allErrorMessages, Toast.LENGTH_LONG).show();
             Toast.makeText(this, errors.toString(), Toast.LENGTH_LONG).show();
         }
@@ -108,6 +124,12 @@ public class MainActivity extends Activity {
         if (tfEmail.hasFocus()) {
             Log.i(MainActivity.class.getName(), "Email has gained the focus");
         } else {
+            Set<ConstraintViolation<User>> errors = validator.validateValue(User.class, "email", tfEmail.getText().toString());
+            if (errors.size() <= 0) {
+                Toast.makeText(this, "Valid Email", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, errors.toString(), Toast.LENGTH_LONG).show();
+            }
             Log.i(MainActivity.class.getName(), "Email has lost the focus");
         }
     }
@@ -116,6 +138,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.validator = Validation.buildDefaultValidatorFactory().getValidator();
         ButterKnife.bind(this);
         tvHello.setText(getString(R.string.hello_statement, getString(R.string.unregistered_user)));
     }
