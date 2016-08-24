@@ -108,12 +108,19 @@ public class MainActivity extends Activity {
 
     }
 
+//    @OnClick(R.id.btnWebView)
+
     @OnClick(R.id.btnMyWebView)
     public void openMyWebView(View button) {
         startActivity(new Intent(this, MyWebView.class));
     }
 
-//    @OnClick(R.id.btnWebView)
+    @OnClick(R.id.btnMasterDetail)
+    public void openMasterDetail(View button) {
+        startActivity(new Intent(this, UserListActivity.class));
+    }
+
+
 //    public void gotoWebView(View button) {
 //        startActivity(new Intent(this, AngularWebApp.class));
 //    }

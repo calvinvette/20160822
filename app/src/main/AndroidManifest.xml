@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nextgened.dnd.diceroller">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +24,24 @@
             android:label="@string/title_activity_angular_web_app" />
         <activity
             android:name=".MyWebView"
-            android:label="@string/title_activity_my_web_view"></activity>
+            android:label="@string/title_activity_my_web_view" />
+        <activity
+            android:name=".UserListActivity"
+            android:label="@string/title_user_list">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserDetailActivity"
+            android:label="@string/title_user_detail"
+            android:parentActivityName=".UserListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nextgened.dnd.diceroller.UserListActivity" />
+        </activity>
     </application>
 
 </manifest>

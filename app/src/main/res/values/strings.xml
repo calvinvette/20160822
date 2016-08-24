@@ -9,5 +9,7 @@
     <string name="flag_of_canada">Flag of Canada</string>
     <string name="title_activity_angular_web_app">AngularWebApp</string>
     <string name="title_activity_my_web_view">MyWebView</string>
+    <string name="title_user_list">Users</string>
+    <string name="title_user_detail">User Detail</string>
 
 </resources>
