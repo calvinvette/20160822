@@ -24,7 +24,6 @@ public class UserDetailFragment extends Fragment {
      * The dummy content this fragment is presenting.
      */
     private User mItem;
-    private UserDAO dao = new MockUserDAO();
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -43,8 +42,7 @@ public class UserDetailFragment extends Fragment {
             // to load content from a content provider.
 
             // TODO - make this more bulletproof. (Try/catch for NPE)
-            String o = getArguments().get(ARG_ITEM_ID).toString();
-            mItem = dao.findById(Long.parseLong(o));
+            mItem = (User) getArguments().get(ARG_ITEM_ID);
         }
     }
 

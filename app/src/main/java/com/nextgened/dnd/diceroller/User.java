@@ -3,6 +3,7 @@ package com.nextgened.dnd.diceroller;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Email;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.Max;
@@ -14,7 +15,7 @@ import javax.validation.constraints.Size;
 // JAXB Annotations
 // JSR-303 Bean Validation Annotations
 
-public class User {
+public class User implements Serializable {
     @Min(1) @Max(99999999999L)
     private Long customerId = -1L;
 

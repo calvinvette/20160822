@@ -71,7 +71,7 @@ public class UserListActivity extends Activity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mItem = mValues.get(position);
+            holder.mItem = mValues.get(position); // Assign the requested user (by "position" in the list
             holder.mIdView.setText(holder.mItem.getCustomerId().toString());
             holder.mContentView.setText(holder.mItem.getUserName() + holder.mItem.getEmail());
 
@@ -80,16 +80,16 @@ public class UserListActivity extends Activity {
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(UserDetailFragment.ARG_ITEM_ID, holder.mItem.getCustomerId().toString());
+                        arguments.putSerializable(UserDetailFragment.ARG_ITEM_ID, holder.mItem);
                         UserDetailFragment fragment = new UserDetailFragment();
                         fragment.setArguments(arguments);
                         getFragmentManager().beginTransaction()
                                 .replace(R.id.user_detail_container, fragment)
                                 .commit();
                     } else {
-                        Context context = v.getContext();
+                        Context context = v.getContext(); // Context of the user Fragment just clicked on
                         Intent intent = new Intent(context, UserDetailActivity.class);
-                        intent.putExtra(UserDetailFragment.ARG_ITEM_ID, holder.mItem.getCustomerId().toString());
+                        intent.putExtra(UserDetailFragment.ARG_ITEM_ID, holder.mItem);
 
                         context.startActivity(intent);
                     }
@@ -103,10 +103,10 @@ public class UserListActivity extends Activity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public User mItem;
+            public final View mView;    // Fragment that a User will be displayed in
+            public final TextView mIdView;  // the textView for the id in that fragment
+            public final TextView mContentView; // the textView for the "content" in that fragment
+            public User mItem; // the user to be displayed in that fragment
 
             public ViewHolder(View view) {
                 super(view);
