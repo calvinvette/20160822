@@ -16,21 +16,21 @@ public class MockUserDAO implements UserDAO {
     static {
         User harry = new User();
         harry.setEmail("harry@hogwarts.ac.uk");
-        harry.setUserName("Harry Potter");
+        harry.setFirstName("Harry Potter");
         harry.setCreatedDate(new Date());
         harry.setCustomerId(++lastPrimaryKey);
         users.put(harry.getCustomerId(), harry);
 
         User ron = new User();
         ron.setEmail("ron@hogwarts.ac.uk");
-        ron.setUserName("Ron Weasley");
+        ron.setFirstName("Ron Weasley");
         ron.setCreatedDate(new Date());
         ron.setCustomerId(++lastPrimaryKey);
         users.put(ron.getCustomerId(), ron);
 
         User hermione = new User();
         hermione.setEmail("hermione@hogwarts.ac.uk");
-        hermione.setUserName("Hermione Granger");
+        hermione.setFirstName("Hermione Granger");
         hermione.setCreatedDate(new Date());
         hermione.setCustomerId(++lastPrimaryKey);
         users.put(hermione.getCustomerId(), hermione);

@@ -53,7 +53,7 @@ public class UserDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.user_detail)).setText(mItem.getUserName() + mItem.getEmail());
+            ((TextView) rootView.findViewById(R.id.user_detail)).setText(mItem.getFirstName() + mItem.getEmail());
         }
 
         return rootView;

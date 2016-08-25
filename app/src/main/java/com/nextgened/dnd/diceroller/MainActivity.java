@@ -17,17 +17,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Vector;
 
 import javax.validation.ConstraintViolation;
-import javax.validation.Path;
 import javax.validation.Validation;
 import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import javax.validation.metadata.ConstraintDescriptor;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,7 +64,7 @@ public class MainActivity extends Activity {
 
         Set<ConstraintViolation<User>> errors = new HashSet<>();
         User user = new User();
-        user.setUserName(userName);
+        user.setFirstName(userName);
         try {
             user.setBirthDate(SimpleDateFormat.getDateInstance().parse(birthDate));
         } catch (ParseException e) {
@@ -140,6 +135,16 @@ public class MainActivity extends Activity {
             }
             Log.i(MainActivity.class.getName(), "Email has lost the focus");
         }
+    }
+
+    @OnClick(R.id.btnStartREST)
+    public void startREST(View view) {
+        UserRESTDataService.startActionStartDataRest(this);
+    }
+
+    @OnClick(R.id.btnStopREST)
+    public void stopREST(View view) {
+        UserRESTDataService.startActionStopDataRest(this);
     }
 
     @Override

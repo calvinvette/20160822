@@ -1,10 +1,13 @@
 package com.nextgened.dnd.diceroller;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.app.Activity;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +34,28 @@ public class UserListActivity extends Activity {
     private boolean mTwoPane;
     private UserDAO dao = new MockUserDAO();
 
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equalsIgnoreCase("DATA_RECEIVED_EVENT")) {
+                setupRecyclerView((RecyclerView) findViewById(R.id.user_list));
+            }
+        }
+    };
+
+    LocalBroadcastManager broadcastManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
+
+        broadcastManager = LocalBroadcastManager.getInstance(this);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("DATA_RECEIVED_EVENT");
+        broadcastManager.registerReceiver(receiver, filter);
+
 
         View recyclerView = findViewById(R.id.user_list);
         assert recyclerView != null;
@@ -47,6 +68,12 @@ public class UserListActivity extends Activity {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        broadcastManager.unregisterReceiver(receiver);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -73,7 +100,7 @@ public class UserListActivity extends Activity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position); // Assign the requested user (by "position" in the list
             holder.mIdView.setText(holder.mItem.getCustomerId().toString());
-            holder.mContentView.setText(holder.mItem.getUserName() + holder.mItem.getEmail());
+            holder.mContentView.setText(holder.mItem.getFirstName() + holder.mItem.getEmail());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override

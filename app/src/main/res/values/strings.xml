@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">DiceRoller</string>
-    <string name="hello_statement">Hello, <xliff:g id="userName">%s</xliff:g>!</string>
+    <string name="hello_statement">Hello, <xliff:g id="firstName">%s</xliff:g>!</string>
     <string name="unregistered_user">Unregistered User</string>
     <string name="goodbye_statement">Goodbye.</string>
     <string name="why_statement">I dont know why you say goodbye, I say hello!</string>
-    <string name="registered_user">User <xliff:g id="userName">%s</xliff:g> is now registered</string>
+    <string name="registered_user">User <xliff:g id="firstName">%s</xliff:g> is now registered</string>
     <string name="flag_of_canada">Flag of Canada</string>
     <string name="title_activity_angular_web_app">AngularWebApp</string>
     <string name="title_activity_my_web_view">MyWebView</string>

@@ -3,6 +3,10 @@ package com.nextgened.dnd.diceroller;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
+
+import java.util.Date;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -13,8 +17,8 @@ import android.content.Context;
  */
 public class UserRESTDataService extends IntentService {
 
-    private static final String ACTION_START_DATA_REST = "com.nextgened.dnd.diceroller.action.StartRestData";
-    private static final String ACTION_STOP_DATA_REST = "com.nextgened.dnd.diceroller.action.StopRestData";
+    public static final String ACTION_START_DATA_REST = "com.nextgened.dnd.diceroller.action.StartRestData";
+    public static final String ACTION_STOP_DATA_REST = "com.nextgened.dnd.diceroller.action.StopRestData";
 
     public UserRESTDataService() {
         super("UserRESTDataService");
@@ -26,7 +30,7 @@ public class UserRESTDataService extends IntentService {
      *
      * @see IntentService
      */
-    public static void startActionStartDataRest(Context context, String param1, String param2) {
+    public static void startActionStartDataRest(Context context) {
         Intent intent = new Intent(context, UserRESTDataService.class);
         intent.setAction(ACTION_START_DATA_REST);
         context.startService(intent);
@@ -38,7 +42,7 @@ public class UserRESTDataService extends IntentService {
      *
      * @see IntentService
      */
-    public static void startActionStopDataRest(Context context, String param1, String param2) {
+    public static void startActionStopDataRest(Context context) {
         Intent intent = new Intent(context, UserRESTDataService.class);
         intent.setAction(ACTION_STOP_DATA_REST);
         context.startService(intent);
@@ -61,7 +65,37 @@ public class UserRESTDataService extends IntentService {
      * parameters.
      */
     private void handleActionStartDataRest() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        Log.i(this.getClass().getName(), "Starting REST Data Service");
+
+        MockUserDAO mock = new MockUserDAO();
+
+        User neville = new User();
+        neville.setEmail("neville@hogwarts.ac.uk");
+        neville.setFirstName("Neville Longbottom");
+        neville.setCreatedDate(new Date());
+        mock.insert(neville);
+
+        User dean = new User();
+        dean.setEmail("dean@hogwarts.ac.uk");
+        dean.setFirstName("Dean Thomas");
+        dean.setCreatedDate(new Date());
+        mock.insert(dean);
+
+        User seamus = new User();
+        seamus.setEmail("seamus@hogwarts.ac.uk");
+        seamus.setFirstName("Seamus Finnegan");
+        seamus.setCreatedDate(new Date());
+        mock.insert(seamus);
+
+        Intent dataFoundIntent = new Intent();
+        dataFoundIntent.setAction("DATA_RECEIVED_EVENT"); // Make this a Constant later on
+                            // Broadcast receivers can filter for just this event
+                            // Otherwise they'll get too many intents from other sources
+//        dataFoundIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //startActivity(dataFoundIntent);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(dataFoundIntent);
+
+        //throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /**
@@ -69,6 +103,7 @@ public class UserRESTDataService extends IntentService {
      * parameters.
      */
     private void handleActionStopDataRest() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        Log.i(this.getClass().getName(), "Stop REST Data Service");
+//        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

@@ -3,5 +3,5 @@
     <string name="app_name">DiceRoller</string>
     <string name="hello_statement">Bonjour, %s</string>
     <string name="unregistered_user">Utilisateur non-inscrit</string>
-    <string name="registered_user">Utilisateur <xliff:g id="userName" example="NewUser">%s</xliff:g> est inscrit</string>
+    <string name="registered_user">Utilisateur <xliff:g id="firstName" example="NewUser">%s</xliff:g> est inscrit</string>
 </resources>
