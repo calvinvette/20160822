@@ -29,9 +29,14 @@ import javax.validation.constraints.Size;
 */
 //@XmlType
 //@XmlRootElement
+//@Entity
+//@Table(name="UserTable")
 public class User implements Serializable {
     @Min(1)
     @Max(99999999999L)
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+//    @Column(name="cid")
     private Long customerId = -1L;
 
     @Size(min = 2, max = 100)

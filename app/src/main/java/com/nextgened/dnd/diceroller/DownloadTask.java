@@ -32,7 +32,7 @@ public class DownloadTask extends AsyncTask<String, String, String> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        MockUserDAO mock = new MockUserDAO();
+        UserDAO mock = new SQLiteUserDAO(context);
 
         User neville = new User();
         neville.setEmail("neville@hogwarts.ac.uk");
@@ -69,7 +69,7 @@ public class DownloadTask extends AsyncTask<String, String, String> {
         Notification note = new Notification.Builder(context)
                 .setContentTitle("New Users!")
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.mipmap.flag_of_canada)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText("You've got Users @" + new Date())
                 .setAutoCancel(true)
                 .build();

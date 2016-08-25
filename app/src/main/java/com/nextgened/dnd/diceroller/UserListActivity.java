@@ -33,7 +33,7 @@ public class UserListActivity extends Activity {
      * device.
      */
     private boolean mTwoPane;
-    private UserDAO dao = new MockUserDAO();
+    private UserDAO dao = new SQLiteUserDAO(this); // new MockUserDAO();
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
