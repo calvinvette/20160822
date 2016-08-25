@@ -38,7 +38,8 @@ public class MockUserDAO implements UserDAO {
 
     @Override
     public User insert(User user) {
-        users.put(++lastPrimaryKey, user);
+        user.setCustomerId(++lastPrimaryKey);
+        users.put(user.getCustomerId(), user);
         return user;
     }
 

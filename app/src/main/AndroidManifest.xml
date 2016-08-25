@@ -28,10 +28,10 @@
         <activity
             android:name=".UserListActivity"
             android:label="@string/title_user_list">
-            <intent-filter>
+            <!--<intent-filter>-->
 
-                <action android:name="DATA_RECEIVED_EVENT"/>
-            </intent-filter>
+                <!--<action android:name="DATA_RECEIVED_EVENT"/>-->
+            <!--</intent-filter>-->
             <!--
                 <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
