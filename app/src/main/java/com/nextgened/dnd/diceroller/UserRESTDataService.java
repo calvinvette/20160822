@@ -1,8 +1,12 @@
 package com.nextgened.dnd.diceroller;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -67,33 +71,10 @@ public class UserRESTDataService extends IntentService {
     private void handleActionStartDataRest() {
         Log.i(this.getClass().getName(), "Starting REST Data Service");
 
-        MockUserDAO mock = new MockUserDAO();
-
-        User neville = new User();
-        neville.setEmail("neville@hogwarts.ac.uk");
-        neville.setFirstName("Neville Longbottom");
-        neville.setCreatedDate(new Date());
-        mock.insert(neville);
-
-        User dean = new User();
-        dean.setEmail("dean@hogwarts.ac.uk");
-        dean.setFirstName("Dean Thomas");
-        dean.setCreatedDate(new Date());
-        mock.insert(dean);
-
-        User seamus = new User();
-        seamus.setEmail("seamus@hogwarts.ac.uk");
-        seamus.setFirstName("Seamus Finnegan");
-        seamus.setCreatedDate(new Date());
-        mock.insert(seamus);
-
-        Intent dataFoundIntent = new Intent();
-        dataFoundIntent.setAction("DATA_RECEIVED_EVENT"); // Make this a Constant later on
-                            // Broadcast receivers can filter for just this event
-                            // Otherwise they'll get too many intents from other sources
-//        dataFoundIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //startActivity(dataFoundIntent);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(dataFoundIntent);
+        for (int i = 0; i < 10; i++) {
+            DownloadTask task = new DownloadTask(this);
+            task.execute();
+        }
 
         //throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -106,4 +87,7 @@ public class UserRESTDataService extends IntentService {
         Log.i(this.getClass().getName(), "Stop REST Data Service");
 //        throw new UnsupportedOperationException("Not yet implemented");
     }
+
+
+
 }

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.app.Activity;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,9 @@ public class UserListActivity extends Activity {
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.i(this.getClass().getName(), "Got Intent: " + intent);
             if (intent.getAction().equalsIgnoreCase("DATA_RECEIVED_EVENT")) {
+                Log.i(this.getClass().getName(), "Got DATA_RECEIVED_EVENT: " + intent);
                 setupRecyclerView((RecyclerView) findViewById(R.id.user_list));
             }
         }
