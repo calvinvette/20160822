@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 // JPA Annotations  RDBMS to JavaBean ORM
 // JAXB Annotations
 // JSR-303 Bean Validation Annotations
-
 public class User implements Serializable {
     @Min(1) @Max(99999999999L)
     private Long customerId = -1L;

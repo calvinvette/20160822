@@ -18,7 +18,7 @@ public class UserDetailFragment extends Fragment {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
+    public static final String USER = "USER";
 
     /**
      * The dummy content this fragment is presenting.
@@ -36,13 +36,13 @@ public class UserDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
+        if (getArguments().containsKey(USER)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
 
             // TODO - make this more bulletproof. (Try/catch for NPE)
-            mItem = (User) getArguments().get(ARG_ITEM_ID);
+            mItem = (User) getArguments().get(USER);
         }
     }
 

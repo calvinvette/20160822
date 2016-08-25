@@ -28,11 +28,14 @@
         <activity
             android:name=".UserListActivity"
             android:label="@string/title_user_list">
-<!--            <intent-filter>
+
+            <!--
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".UserDetailActivity"
@@ -42,6 +45,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nextgened.dnd.diceroller.UserListActivity" />
         </activity>
+
+        <service
+            android:name=".UserRESTDataService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

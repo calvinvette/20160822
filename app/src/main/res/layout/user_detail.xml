@@ -1,3 +1,9 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/user_detail"
@@ -7,3 +13,45 @@
     android:padding="16dp"
     android:textIsSelectable="true"
     tools:context="com.nextgened.dnd.diceroller.UserDetailFragment" />
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/user_detail_id"
+style="?android:attr/textAppearanceLarge"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+android:textIsSelectable="true"
+tools:context="com.nextgened.dnd.diceroller.UserDetailFragment" />
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/user_detail_user_name"
+style="?android:attr/textAppearanceLarge"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+android:textIsSelectable="true"
+tools:context="com.nextgened.dnd.diceroller.UserDetailFragment" />
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/user_detail_email"
+style="?android:attr/textAppearanceLarge"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+android:textIsSelectable="true"
+tools:context="com.nextgened.dnd.diceroller.UserDetailFragment" />
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/user_detail_birth_date"
+style="?android:attr/textAppearanceLarge"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+android:textIsSelectable="true"
+tools:context="com.nextgened.dnd.diceroller.UserDetailFragment" />
+
+</LinearLayout>

@@ -38,8 +38,8 @@ public class UserDetailActivity extends Activity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putSerializable(UserDetailFragment.ARG_ITEM_ID,
-                    getIntent().getSerializableExtra(UserDetailFragment.ARG_ITEM_ID));
+            arguments.putSerializable(UserDetailFragment.USER,
+                    getIntent().getSerializableExtra(UserDetailFragment.USER));
             UserDetailFragment fragment = new UserDetailFragment();
             fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()

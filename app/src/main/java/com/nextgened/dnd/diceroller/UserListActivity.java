@@ -80,7 +80,7 @@ public class UserListActivity extends Activity {
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putSerializable(UserDetailFragment.ARG_ITEM_ID, holder.mItem);
+                        arguments.putSerializable(UserDetailFragment.USER, holder.mItem);
                         UserDetailFragment fragment = new UserDetailFragment();
                         fragment.setArguments(arguments);
                         getFragmentManager().beginTransaction()
@@ -89,7 +89,7 @@ public class UserListActivity extends Activity {
                     } else {
                         Context context = v.getContext(); // Context of the user Fragment just clicked on
                         Intent intent = new Intent(context, UserDetailActivity.class);
-                        intent.putExtra(UserDetailFragment.ARG_ITEM_ID, holder.mItem);
+                        intent.putExtra(UserDetailFragment.USER, holder.mItem);
 
                         context.startActivity(intent);
                     }
